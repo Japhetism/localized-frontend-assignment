@@ -7,14 +7,15 @@ const LoginView = () => {
     
     const classes = useStyles();
 
-    return <Container maxWidth="xl" className={classes.root}>
+    return <React.Fragment>
+    <Container maxWidth="xl" className={classes.root}>
         <Box display="flex">
             <Box p={10}>
                 <Typography variant="h4" component="h4" className={classes.headerTitle}>
-                    Facebook
+                    2Konnect
                 </Typography>
                 <Typography variant="body1" component="span" className={classes.headerDescription}>
-                    Facebook helps you connect and share with the people in your life.
+                    2Konnect helps you connect and share with the people in your life.
                 </Typography>
             </Box>
             <Box p={10}>
@@ -22,6 +23,10 @@ const LoginView = () => {
             </Box>
         </Box>
   </Container>
+  <Container maxWidth="xl" className={classes.footer}>
+      <Typography>2Konnect &copy; 2021</Typography>
+  </Container>
+  </React.Fragment>
 }
 
 const useStyles = makeStyles(() => ({
@@ -41,6 +46,11 @@ const useStyles = makeStyles(() => ({
         fontWeight: "normal",
         lineHeight: "32px",
         width: "500px"
+    },
+    footer: {
+        padding: '20px 0px 20px 40px',
+        color: '#737373',
+        fontSize: '10px'
     }
 }))
 

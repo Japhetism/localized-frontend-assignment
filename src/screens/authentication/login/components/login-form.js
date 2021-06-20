@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
-    FormHelperText, TextField, Link, InputAdornment, 
-    IconButton, Button, Typography, makeStyles, Container 
+    FormHelperText, TextField, InputAdornment, 
+    IconButton, Button, makeStyles, Container 
 } from '@material-ui/core';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -15,7 +15,6 @@ const validationSchema = yup.object({
       .required('Email is required'),
     password: yup
       .string('Enter your password')
-      .min(8, 'Password should be of minimum 8 characters length')
       .required('Password is required')
   });
 
