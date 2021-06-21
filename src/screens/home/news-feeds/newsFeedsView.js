@@ -1,12 +1,23 @@
+import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import Header from '../../../components/header';
+import NewsFeedsWall from '../../../components/newsFeedsWall';
 
 const NewsFeedsView = (props) => {
-    const { logout } = props;
-    return <React.Fragment>
+    const classes = useStyles();
+    const { logout, newsFeedsData, isLoading } = props;
+    
+    return <div className={classes.root}>
         <Header logout={logout}/>
-    </React.Fragment>
+        <NewsFeedsWall data={newsFeedsData} isLoading={isLoading} />
+    </div>
 }
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        backgroundColor: '#F0F2F5',
+    }
+}));
 
 export default NewsFeedsView;
 
