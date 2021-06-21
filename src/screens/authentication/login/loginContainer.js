@@ -5,23 +5,14 @@ import { AuthContext } from '../../../App';
 export const LoginContainer = () => {
     const { dispatch } = React.useContext(AuthContext);
     const initialState = {
-        email: "",
-        password: "",
         isLoading: false,
         errorMessage: null
     };
 
     const [data, setData] = React.useState(initialState);
 
-    const handleInputChange = (event) => {
-        setData({
-            ...data,
-            [event.target.name]: event.target.value
-        });
-    }
-
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
+    const handleFormSubmit = (loginData) => {
+        console.log(loginData);
         setData({
             ...data,
             isLoading: true,
@@ -32,12 +23,17 @@ export const LoginContainer = () => {
             headers: {
                 "content-Type": "application/json"
             },
-            body: JSON.stringify({
-                email: data.email,
-                password: data.password
-            })
+            body: loginData
+        })
+        .then(res => {
+            if(res.ok) {
+                return res.json();
+            } else {
+                throw res;
+            }
         })
         .then(resJson => {
+            console.log("from login endpoint ", resJson)
             dispatch({
                 type: "LOGIN",
                 payload: resJson
@@ -52,6 +48,6 @@ export const LoginContainer = () => {
         })
     }
 
-    return <LoginView />
+    return <LoginView handleFormSubmit={handleFormSubmit} />
     
 }

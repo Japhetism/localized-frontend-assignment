@@ -11,9 +11,10 @@ const initialState = {
 };
 
 const loginReducer = (state, action) => {
+  console.log("login user action ", action);
   switch(action.type) {
     case "LOGIN":
-      localStorage.setItem("user", JSON.stringify(action.payload.user));
+      localStorage.setItem("user", JSON.stringify(action.payload.data.user));
       localStorage.setItem("token", JSON.stringify(action.payload.token));
       return {
         ...state,
@@ -35,7 +36,7 @@ const loginReducer = (state, action) => {
 
 const App = () => {
   const [state, dispatch] = React.useReducer(loginReducer, initialState);
-
+  
   React.useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || null);
     const token = JSON.parse(localStorage.getItem("token") || null);
@@ -44,7 +45,9 @@ const App = () => {
       dispatch({
         type: "LOGIN",
         payload: {
-          user,
+          data: {
+            user: user
+          },
           token
         }
       })

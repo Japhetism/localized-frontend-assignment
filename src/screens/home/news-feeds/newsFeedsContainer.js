@@ -36,7 +36,7 @@ const newsFeedsReducer = (state, action) => {
 }
 
 export const NewsFeedsContainer = () => {
-    const { state: authState } = React.useContext(AuthContext);
+    const { state: authState, dispatch: authDispatch } = React.useContext(AuthContext);
     const [state, dispatch] = React.useReducer(newsFeedsReducer, initialState);
 
     React.useEffect(() => {
@@ -70,6 +70,12 @@ export const NewsFeedsContainer = () => {
         });
     }, [authState.token]);
 
+    const logout = () => {
+        authDispatch({
+            type: "LOGOUT"
+        })
+    }
 
-    return <NewsFeedsView />
+
+    return <NewsFeedsView logout={logout} />
 }

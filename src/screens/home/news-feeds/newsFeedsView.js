@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from '../../../components/header';
 
-const NewsFeedsView = () => {
-    return <div>
-        <span>News Feeds Screen here</span>
-    </div>
+const NewsFeedsView = (props) => {
+    const { logout } = props;
+    return <React.Fragment>
+        <Header logout={logout}/>
+    </React.Fragment>
 }
 
 export default NewsFeedsView;

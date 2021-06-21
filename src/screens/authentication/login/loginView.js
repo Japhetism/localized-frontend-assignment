@@ -3,7 +3,7 @@ import { Box, Container, makeStyles } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
 import LoginForm from './components/login-form';
 
-const LoginView = () => {
+const LoginView = (props) => {
     
     const classes = useStyles();
 
@@ -19,7 +19,7 @@ const LoginView = () => {
                 </Typography>
             </Box>
             <Box p={10}>
-                <LoginForm />
+                <LoginForm {...props} />
             </Box>
         </Box>
   </Container>

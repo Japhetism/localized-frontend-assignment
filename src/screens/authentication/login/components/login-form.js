@@ -20,9 +20,10 @@ const validationSchema = yup.object({
 
 const LoginForm  = (props) => {
 
+    const { handleFormSubmit } = props; 
+
     const classes = useStyles();
     const [showPassword, setShowPassword] = React.useState(false);
-    const { handleSubmit } = props;
 
     const formik = useFormik({
         initialValues: {
@@ -31,7 +32,7 @@ const LoginForm  = (props) => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            handleSubmit(JSON.stringify(values, null, 2));
+            handleFormSubmit(JSON.stringify(values, null, 2));
         },
     });
 
