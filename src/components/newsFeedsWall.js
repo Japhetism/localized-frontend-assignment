@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import NewsFeed from './newsFeed';
 import SideMenu from './side-menu';
+import SideMenuCopy from './side-menu-copy'
 
 const NewsFeedsWall = (props) => {
     const classes = useStyles();
@@ -20,7 +21,7 @@ const NewsFeedsWall = (props) => {
             {!isLoading &&  data && data.responseData.map((res, index) => <NewsFeed data={res} key={`${res.id}${index}`} /> )}
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>xs=6 sm=3</Paper>
+          <SideMenuCopy />
         </Grid>
       </Grid>
     </div>

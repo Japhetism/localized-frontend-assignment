@@ -11,9 +11,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
-const SideMenu = () => {
+const SideMenuCopy= () => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -40,6 +40,7 @@ const SideMenu = () => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
+        <Typography variant="h6" component="span">Friend Requests</Typography>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
@@ -68,21 +69,31 @@ const SideMenu = () => {
     //   onClick={toggleDrawer(anchor, false)}
     //   onKeyDown={toggleDrawer(anchor, false)}
     >
-        
-        <List>
-          <ListItem button key={"BO"}>
-            <ListItemIcon>
-            <Avatar aria-label="recipe" className={classes.avatar}>
-                BO
-          </Avatar>
-            </ListItemIcon>
-            <ListItemText primary={"Babatunde Ojo"} />
-          </ListItem>
-      </List>
       <List>
-        {['ConVID-19 Information Center', 'Friends', 'Groups', 'Market', 'Watch', 'Events', 'Memories', 'Saved', 'Pages', 'Ad Center', 'Ads Manager', 'Campus', 'Offers', 'Play Games', 'Climate Science Information', 'Community Help', 'Gaming Video', 'Most Recent', 'Weather', 'Recent Ad Activity', 'Messenger', 'Jobs', 'Fundraisers', 'Friend List', 'Emotional Health', '2Konnect Play'].map((text, index) => (
+        <Typography variant="h6" component="span">Friend Requests</Typography>
+        {['Babatunde Ojo'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon><AccountCircleIcon /></ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        <Typography variant="h6" component="span">Birthdays</Typography>
+        {['Babatunde Ojo'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon><AccountCircleIcon /></ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        <Typography variant="h6" component="span">Contacts</Typography>
+        {['Babatunde Ojo', 'James Doe', 'John kennedy', 'Kelvin Hart', 'Jacob Eson', 'Loius Rufus', 'Caleb Jasmine', 'Alves Alves', 'Doe Alves', 'kennedy Alves', 'Amazon Juis', 'Juis Ruf'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon><AccountCircleIcon /></ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -90,18 +101,8 @@ const SideMenu = () => {
       <Divider />
       <div>
           <Typography variant="h6" component="span">
-            Your Shortcuts
+            Group Conversation
           </Typography>
-          <div>
-            <Typography variant="body1" component="span">
-                Jarfluect Entertainment Inc.
-            </Typography>
-          </div>
-        </div>
-        <div>
-        <Typography variant="body1" component="span">
-            2Konnect &copy; 2021
-        </Typography>
         </div>
     </div>
   );
@@ -116,4 +117,4 @@ const useStyles = makeStyles({
     },
 });  
 
-export default SideMenu;
+export default SideMenuCopy;
