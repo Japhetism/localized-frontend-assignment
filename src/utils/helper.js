@@ -7,3 +7,11 @@ export const getStringFirstLetter = (string) => {
 export const formatDate = (date) => {
     return moment(date).format("MMM DD, YYYY");
 }
+
+export const storeData = (storeType, data) => {
+    localStorage.setItem(storeType, JSON.stringify(data));
+}
+
+export const retrieveData = (retrieveType) => {
+    return JSON.parse(localStorage.getItem(retrieveType) || null);
+}

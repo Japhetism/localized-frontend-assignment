@@ -31,10 +31,6 @@ export const LoginContainer = () => {
                         type: "LOGIN",
                         payload: resJson
                     })
-                    setData({
-                        ...data,
-                        isLoading: false
-                    })
                 } else {
                     dispatch({
                         type: "LOGIN_FAILURE",

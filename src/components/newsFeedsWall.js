@@ -7,14 +7,14 @@ import AdditionalInfo from './additionInfo';
 
 const NewsFeedsWall = (props) => {
   const classes = useStyles();
-  const { data, isLoading } = props;
+  const { data, isLoading, user } = props;
     
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={6} sm={3}>
          <SideBar>
-           <NavLinks />
+           <NavLinks user={user} />
          </SideBar>
         </Grid>
         <Grid item xs={6} sm={6}>

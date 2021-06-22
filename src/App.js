@@ -2,6 +2,7 @@ import React from 'react';
 import LoginScreen from './screens/authentication/login';
 import NewsFeedsScreen from './screens/home/news-feeds';
 import Toast from './components/toast';
+import { storeData, retrieveData } from './utils/helper';
 
 export const AuthContext = React.createContext();
 
@@ -16,27 +17,31 @@ const loginReducer = (state, action) => {
   console.log("login user action ", action);
   switch(action.type) {
     case "LOGIN":
-      localStorage.setItem("user", JSON.stringify(action.payload.data.user));
-      localStorage.setItem("token", JSON.stringify(action.payload.token));
+      storeData("user", action.payload.data.user);
+      storeData("token", action.payload.token);
       return {
         ...state,
         isAuthenticated: true,
-        user: action.payload.user,
-        token: action.payload.token
+        user: action.payload.data.user,
+        token: action.payload.token,
+        error: null
       };
     case "LOGOUT":
       localStorage.clear();
       return {
         ...state,
         isAuthenticated: false,
-        user: null
+        user: null,
+        error: null,
+        token: null
       };
     case "LOGIN_FAILURE":
       return {
         ...state,
         isAuthenticated: false,
         user: null,
-        error: action.payload.message || action.payload
+        error: action.payload.message || action.payload,
+        token: null
       }
     default:
       return state;
@@ -49,8 +54,8 @@ const App = () => {
   console.log("from app", state)
   
   React.useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user") || null);
-    const token = JSON.parse(localStorage.getItem("token") || null);
+    const user = retrieveData("user");
+    const token = retrieveData("token");
 
     if(user && token) {
       dispatch({

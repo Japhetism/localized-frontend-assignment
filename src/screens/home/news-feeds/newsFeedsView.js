@@ -5,11 +5,11 @@ import NewsFeedsWall from '../../../components/newsFeedsWall';
 
 const NewsFeedsView = (props) => {
     const classes = useStyles();
-    const { logout, newsFeedsData, isLoading } = props;
+    const { logout, newsFeedsData, isLoading, user } = props;
     
     return <div className={classes.root}>
-        <Header logout={logout}/>
-        <NewsFeedsWall data={newsFeedsData} isLoading={isLoading} />
+        <Header logout={logout} />
+        <NewsFeedsWall data={newsFeedsData} isLoading={isLoading} user={user} />
     </div>
 }
 

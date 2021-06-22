@@ -5,16 +5,18 @@ import {
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
+import { getStringFirstLetter } from '../utils/helper';
 
-const LoggedInUser = () => {
+const LoggedInUser = (props) => {
+    const { user: { firstName, lastName } } = props
     return <List>
         <ListItem button key={"BO"}>
             <ListItemIcon>
             <Avatar aria-label="recipe">
-                BO
+                {`${getStringFirstLetter(firstName)}${getStringFirstLetter(lastName)}`}
         </Avatar>
             </ListItemIcon>
-            <ListItemText primary={"Babatunde Ojo"} />
+            <ListItemText primary={`${firstName} ${lastName}`} />
         </ListItem>
     </List>
 }
@@ -50,9 +52,10 @@ const Shortcuts = () => {
     </React.Fragment>
 }
 
-const NavLinks = () => {
+const NavLinks = (props) => {
+    const { user } = props;
     return <React.Fragment>
-        <LoggedInUser />
+        <LoggedInUser user={user} />
         <Links />
         <Divider />
         <Shortcuts />

@@ -39,7 +39,7 @@ export const NewsFeedsContainer = () => {
     const { state: authState, dispatch: authDispatch } = React.useContext(AuthContext);
     const [state, dispatch] = React.useReducer(newsFeedsReducer, initialState);
 
-    console.log("from news feed state ", state)
+    console.log("from news feed state ", authState)
 
     React.useEffect(() => {
         dispatch({
@@ -81,5 +81,11 @@ export const NewsFeedsContainer = () => {
     const { isLoading, hasError, newsFeeds } = state;
 
 
-    return <NewsFeedsView logout={logout} isLoading={isLoading} hasError={hasError} newsFeedsData={newsFeeds.data} />
+    return <NewsFeedsView 
+        logout={logout} 
+        isLoading={isLoading} 
+        hasError={hasError} 
+        newsFeedsData={newsFeeds.data} 
+        user={authState.user}
+    />
 }
