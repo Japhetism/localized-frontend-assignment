@@ -95,7 +95,6 @@ const LoginForm  = (props) => {
 const useStyles = makeStyles(() => ({
     root: {
         backgroundColor: '#FFFFFF',
-        width: '150%',
         borderRadius: '3%',
         boxShadow: '5px 5px 5px #aaaaaa'
     },

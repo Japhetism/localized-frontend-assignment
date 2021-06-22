@@ -21,7 +21,7 @@ const Toast = (props) => {
 
     React.useEffect(() => {
         message ? setOpen(true) : setOpen(false)
-    }, [props])
+    }, [props, message])
 
     return (
         <div className={classes.root}>

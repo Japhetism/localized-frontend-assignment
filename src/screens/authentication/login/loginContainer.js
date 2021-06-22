@@ -2,7 +2,6 @@ import React from 'react';
 import LoginView from './loginView';
 import { AuthContext } from '../../../App';
 import { login } from '../../../services/authentication';
-import Toast from '../../../components/toast';
 
 export const LoginContainer = () => {
     const { dispatch } = React.useContext(AuthContext);
