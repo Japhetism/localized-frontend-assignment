@@ -32,10 +32,18 @@ export const LoginContainer = () => {
                         type: "LOGIN",
                         payload: resJson
                     })
+                    setData({
+                        ...data,
+                        isLoading: false
+                    })
                 } else {
                     dispatch({
                         type: "LOGIN_FAILURE",
                         payload: resJson
+                    })
+                    setData({
+                        ...data,
+                        isLoading: false
                     })
                 }
             })
@@ -44,10 +52,10 @@ export const LoginContainer = () => {
                     type: "LOGIN_FAILURE",
                     payload: error
                 })
-            })
-            setData({
-                ...data,
-                isLoading: false
+                setData({
+                    ...data,
+                    isLoading: false
+                })
             })
     }
 

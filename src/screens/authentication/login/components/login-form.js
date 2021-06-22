@@ -84,7 +84,7 @@ const LoginForm  = (props) => {
                     />
                     <FormHelperText className="MuiFormHelperText-root Mui-error">{formik.touched.password && formik.errors.password}</FormHelperText>
                 </div>
-                <Button fullWidth variant="contained" disabled={isLoading} size="large" type="submit" className={classes.button}>
+                <Button fullWidth variant="contained" size="large" type="submit" className={classes.button}>
                     {!isLoading ? "Log In" : <Loader color="inherit" size={20} />}
                 </Button>
             </form>
