@@ -97,7 +97,7 @@ const Header = (props) => {
   
     return (
       <div className={classes.grow}>
-        <AppBar position="static">
+        <AppBar position="fixed" className={classes.header} >
           <Toolbar>
             <Typography className={classes.title} variant="h6" noWrap>
               Konnect
@@ -160,22 +160,29 @@ const Header = (props) => {
 const useStyles = makeStyles((theme) => ({
     grow: {
       flexGrow: 1,
+      backgroundColor: "red"
+    },
+    header: {
+      backgroundColor: "#FFFFFF",
+      color: '#1877F2',
     },
     menuButton: {
       marginRight: theme.spacing(2),
     },
     title: {
       display: 'none',
+      fontWeight: "bold",
       [theme.breakpoints.up('sm')]: {
         display: 'block',
       },
     },
     search: {
       position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.15),
+      backgroundColor: "#F0F2F5",
+      borderRadius: "10px",
       '&:hover': {
-        backgroundColor: fade(theme.palette.common.white, 0.25),
+        backgroundColor: "#F0F2F5",
+        borderRadius: "10px",
       },
       marginRight: theme.spacing(2),
       marginLeft: 0,

@@ -3,6 +3,7 @@ import {
     List, Divider, ListItem, ListItemIcon, ListItemText, Typography, makeStyles 
 } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import CakeIcon from '@material-ui/icons/Cake';
 import { contacts } from "../fixtures/contacts";
   
 const FriendsRequests = () => {
@@ -24,7 +25,7 @@ const Birthdays = () => {
     return <List>
         <Typography variant="h6" component="span" className={classes.title}>Birthdays</Typography>
         <ListItem button key={text}>
-            <ListItemIcon><AccountCircleIcon /></ListItemIcon>
+            <ListItemIcon><CakeIcon /></ListItemIcon>
             <ListItemText primary={text} />
         </ListItem>
     </List>

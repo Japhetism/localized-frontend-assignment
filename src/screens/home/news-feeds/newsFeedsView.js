@@ -16,6 +16,7 @@ const NewsFeedsView = (props) => {
 const useStyles = makeStyles((theme) => ({
     root: {
         backgroundColor: '#F0F2F5',
+        paddingTop: "50px"
     }
 }));
 
