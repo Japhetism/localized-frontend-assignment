@@ -1,11 +1,12 @@
 import React from 'react';
 import { 
-  List, Divider, ListItem, ListItemIcon, ListItemText, Typography 
+  List, Divider, ListItem, ListItemIcon, ListItemText, Typography, makeStyles 
 } from '@material-ui/core';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
 import { getStringFirstLetter } from '../utils/helper';
+import { links } from '../fixtures/links';
 
 const LoggedInUser = (props) => {
     const { user: { firstName, lastName } } = props
@@ -22,14 +23,15 @@ const LoggedInUser = (props) => {
 }
 
 const Links = () => {
+    const classes = useStyles();
     return <List>
-    {['ConVID-19 Information Center', 'Friends', 'Groups', 'Market', 'Watch', 'Events', 'Memories', 'Saved', 'Pages', 'Ad Center', 'Ads Manager', 'Campus', 'Offers', 'Play Games', 'Climate Science Information', 'Community Help', 'Gaming Video', 'Most Recent', 'Weather', 'Recent Ad Activity', 'Messenger', 'Jobs', 'Fundraisers', 'Friend List', 'Emotional Health', '2Konnect Play'].map((text, index) => (
-      <ListItem button key={text}>
-        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-        <ListItemText primary={text} />
-      </ListItem>
-    ))}
-  </List>
+        {links.map((link, index) => (
+        <ListItem button key={link.name}>
+            <ListItemIcon>{<img src={link.icon} alt="" className={classes.image} />}</ListItemIcon>
+            <ListItemText primary={link.name} />
+        </ListItem>
+        ))}
+    </List>
 }
 
 const Shortcuts = () => {
@@ -61,5 +63,12 @@ const NavLinks = (props) => {
         <Shortcuts />
     </React.Fragment>
 }
+
+const useStyles = makeStyles((theme) => ({
+    image: {
+        height: "36px",
+        width: "36px"
+    }
+}));
 
 export default NavLinks;
