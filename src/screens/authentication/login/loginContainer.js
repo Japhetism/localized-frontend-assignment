@@ -8,7 +8,6 @@ export const LoginContainer = () => {
     const { dispatch } = React.useContext(AuthContext);
     const initialState = {
         isLoading: false,
-        errorMessage: null
     };
 
     const [data, setData] = React.useState(initialState);
@@ -16,8 +15,7 @@ export const LoginContainer = () => {
     const handleFormSubmit = (loginData) => {
         setData({
             ...data,
-            isLoading: true,
-            errorMessage: null
+            isLoading: true
         })
         login(loginData)
             .then(res => {
@@ -46,16 +44,13 @@ export const LoginContainer = () => {
                     type: "LOGIN_FAILURE",
                     payload: error
                 })
-                // <Toast />
-                // setData({
-                //     ...data,
-                //     isLoading: false,
-                //     errorMessage: error.message
-                // })
-                console.log(error)
+            })
+            setData({
+                ...data,
+                isLoading: false
             })
     }
 
-    return <LoginView handleFormSubmit={handleFormSubmit} />
+    return <LoginView handleFormSubmit={handleFormSubmit} isLoading={data.isLoading} />
     
 }

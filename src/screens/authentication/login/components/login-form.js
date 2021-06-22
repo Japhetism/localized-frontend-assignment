@@ -7,6 +7,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Loader from '../../../../components/loader';
 
 const validationSchema = yup.object({
     email: yup
@@ -19,8 +20,7 @@ const validationSchema = yup.object({
 });
 
 const LoginForm  = (props) => {
-
-    const { handleFormSubmit } = props; 
+    const { handleFormSubmit, isLoading } = props; 
 
     const classes = useStyles();
     const [showPassword, setShowPassword] = React.useState(false);
@@ -50,6 +50,7 @@ const LoginForm  = (props) => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         error={formik.touched.email && Boolean(formik.errors.email)}
+                        disabled={isLoading}
                     />
                     <FormHelperText className="MuiFormHelperText-root Mui-error">{formik.touched.email && formik.errors.email}</FormHelperText>
                 </div>
@@ -61,6 +62,7 @@ const LoginForm  = (props) => {
                         name="password"
                         label="Password"
                         type={showPassword ? 'text' : 'password'}
+                        disabled={isLoading}
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
@@ -82,8 +84,8 @@ const LoginForm  = (props) => {
                     />
                     <FormHelperText className="MuiFormHelperText-root Mui-error">{formik.touched.password && formik.errors.password}</FormHelperText>
                 </div>
-                <Button fullWidth variant="contained" size="large" type="submit" className={classes.button}>
-                    Log In
+                <Button fullWidth variant="contained" disabled={isLoading} size="large" type="submit" className={classes.button}>
+                    {!isLoading ? "Log In" : <Loader color="inherit" size={20} />}
                 </Button>
             </form>
         </Container>
