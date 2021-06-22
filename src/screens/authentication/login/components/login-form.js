@@ -16,7 +16,7 @@ const validationSchema = yup.object({
     password: yup
       .string('Enter your password')
       .required('Password is required')
-  });
+});
 
 const LoginForm  = (props) => {
 

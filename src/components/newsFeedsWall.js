@@ -1,27 +1,29 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles, Grid } from '@material-ui/core';
 import NewsFeed from './newsFeed';
-import SideMenu from './side-menu';
-import SideMenuCopy from './side-menu-copy'
+import NavLinks from './navLinks';
+import SideBar from './sideBar';
+import AdditionalInfo from './additionInfo';
 
 const NewsFeedsWall = (props) => {
-    const classes = useStyles();
-    const { data, isLoading } = props;
-
+  const classes = useStyles();
+  const { data, isLoading } = props;
     
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={6} sm={3}>
-         <SideMenu />
+         <SideBar>
+           <NavLinks />
+         </SideBar>
         </Grid>
         <Grid item xs={6} sm={6}>
             {!isLoading &&  data && data.responseData.map((res, index) => <NewsFeed data={res} key={`${res.id}${index}`} /> )}
         </Grid>
         <Grid item xs={6} sm={3}>
-          <SideMenuCopy />
+          <SideBar>
+            <AdditionalInfo />
+          </SideBar>
         </Grid>
       </Grid>
     </div>

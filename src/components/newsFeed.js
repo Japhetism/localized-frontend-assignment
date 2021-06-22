@@ -1,43 +1,20 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
+import { 
+  makeStyles, Card, CardHeader, CardMedia, CardContent, 
+  Avatar, Typography, CardActions 
+} from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Button from '@material-ui/core/Button';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import PublicIcon from '@material-ui/icons/Public';
-import moment from 'moment';
+import { getStringFirstLetter, formatDate } from '../utils/helper';
 
 const NewsFeed = (props) => {
-    const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
+  
+  const classes = useStyles();
   const { data: { firstName, lastName, message, country, date } } = props;
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
-  const getStringFirstLetter = (string) => {
-      return string.charAt(0)
-  }
-
-  const formatDate = (date) => {
-      return moment(date).format("MMM DD, YYYY");
-      //return new Date(date).format("MM DD, YYYY")
-  }
 
   return (
     <Card className={classes.root}>

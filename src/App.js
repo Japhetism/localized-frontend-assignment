@@ -1,13 +1,15 @@
 import React from 'react';
 import LoginScreen from './screens/authentication/login';
 import NewsFeedsScreen from './screens/home/news-feeds';
+import Toast from './components/toast';
 
 export const AuthContext = React.createContext();
 
 const initialState = {
   isAuthenticated: false,
   user: null,
-  token: null
+  token: null,
+  error: null
 };
 
 const loginReducer = (state, action) => {
@@ -29,6 +31,13 @@ const loginReducer = (state, action) => {
         isAuthenticated: false,
         user: null
       };
+    case "LOGIN_FAILURE":
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+        error: action.payload.message || action.payload
+      }
     default:
       return state;
   }
@@ -36,6 +45,8 @@ const loginReducer = (state, action) => {
 
 const App = () => {
   const [state, dispatch] = React.useReducer(loginReducer, initialState);
+
+  console.log("from app", state)
   
   React.useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || null);
@@ -61,6 +72,7 @@ const App = () => {
         dispatch
       }}
     >
+      <Toast message={state.error} />
       {!state.isAuthenticated ? <LoginScreen /> : <NewsFeedsScreen />}
     </AuthContext.Provider>
   )
