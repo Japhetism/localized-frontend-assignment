@@ -35,18 +35,19 @@ const Links = () => {
 }
 
 const Shortcuts = () => {
+    const classes = useStyles();
     return <React.Fragment>
-        <div>
-            <Typography variant="h6" component="span">
+        <div className={classes.ShortcutContainer}>
+            <Typography variant="h6" component="span" className={classes.shortcutsTitle}>
                 Your Shortcuts
             </Typography>
-            <div>
+            <div className={classes.shortcutsInfo}>
                 <Typography variant="body1" component="span">
-                    Jarfluect Entertainment Inc.
+                    <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yz/r/I69_YK291RX.png?_nc_eui2=AeEyk9QJFXPo-mx5k5CKH7sEOC-3JWBXKCg4L7clYFcoKERti7NVyfBbXhga8wqZiQk" alt="" className={classes.image} /> Jarfluect Entertainment Inc.
                 </Typography>
             </div>
-            <div>
-                <Typography variant="body1" component="span">
+            <div className={classes.copyrightContainer}>
+                <Typography variant="body1" component="span" className={classes.copyright}>
                     Konnect &copy; 2021
                 </Typography>
             </div>
@@ -65,9 +66,25 @@ const NavLinks = (props) => {
 }
 
 const useStyles = makeStyles((theme) => ({
+    ShortcutContainer: {
+        margin: "20px"
+    },
     image: {
-        height: "36px",
-        width: "36px"
+        height: "26px",
+        width: "26px"
+    },
+    shortcutsTitle: {
+        color: "#65676B"
+    },
+    shortcutsInfo: {
+        marginTop: "10px"
+    },
+    copyright: {
+        fontSize: "12px",
+        color: "#65676B"
+    },
+    copyrightContainer: {
+        marginTop: "30px"
     }
 }));
 

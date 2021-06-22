@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   makeStyles, Card, CardHeader, CardMedia, CardContent, 
-  Avatar, Typography, CardActions 
+  Avatar, Typography, CardActions, Divider, Grid 
 } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import { red } from '@material-ui/core/colors';
@@ -42,25 +42,34 @@ const NewsFeed = (props) => {
           {message}
         </Typography>
       </CardContent>
+      <Divider />
       <CardActions>
-        <Typography size="small" color="primary">
-            <IconButton aria-label="add to favorites">
+        <Grid container spacing={3} className={classes.center}>
+          <Grid item lg={4} md={4} sm={4} xs={4}>
+            <Typography size="small" color="primary">
+              <IconButton aria-label="add to favorites">
                 <FavoriteBorderIcon />
-            </IconButton>
-            Likes
-        </Typography>
-        <Typography size="small" color="primary">
-            <IconButton aria-label="share">
+              </IconButton>
+              Likes
+            </Typography>
+          </Grid>
+          <Grid item lg={4} md={4} sm={4} xs={4}>
+            <Typography size="small" color="primary">
+              <IconButton aria-label="share">
                 <ChatBubbleOutlineIcon />
-            </IconButton>
-            Comments
-        </Typography>
-        <Typography size="small" color="primary">
-            <IconButton aria-label="share">
-                <ShareIcon />
-            </IconButton>
-            Share
-        </Typography>
+              </IconButton>
+              Comments
+            </Typography>
+          </Grid>
+          <Grid item lg={4} md={4} sm={4} xs={4}>
+            <Typography size="small" color="primary">
+              <IconButton aria-label="share">
+                  <ShareIcon />
+              </IconButton>
+              Share
+            </Typography>
+          </Grid>
+        </Grid>
       </CardActions>
     </Card>
   );
@@ -89,6 +98,9 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
       backgroundColor: red[500],
     },
+    center: {
+      textAlign: "center"
+    }
 }));
 
 export default NewsFeed;

@@ -1,12 +1,14 @@
 import React from 'react';
 import { 
-    List, Divider, ListItem, ListItemIcon, ListItemText, Typography 
+    List, Divider, ListItem, ListItemIcon, ListItemText, Typography, makeStyles 
 } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { contacts } from "../fixtures/contacts";
   
 const FriendsRequests = () => {
+    const classes = useStyles();
     return <List>
-        <Typography variant="h6" component="span">Friend Requests</Typography>
+        <Typography variant="h6" component="span" className={classes.title}>Friend Requests</Typography>
         {['Babatunde Ojo'].map((text, index) => (
             <ListItem button key={text}>
                 <ListItemIcon><AccountCircleIcon /></ListItemIcon>
@@ -17,9 +19,10 @@ const FriendsRequests = () => {
 }
 
 const Birthdays = () => {
+    const classes = useStyles();
     const text = "James Doe and 2 others have birthdays today."
     return <List>
-        <Typography variant="h6" component="span">Birthdays</Typography>
+        <Typography variant="h6" component="span" className={classes.title}>Birthdays</Typography>
         <ListItem button key={text}>
             <ListItemIcon><AccountCircleIcon /></ListItemIcon>
             <ListItemText primary={text} />
@@ -28,9 +31,10 @@ const Birthdays = () => {
 }
 
 const Contacts = () => {
+    const classes = useStyles();
     return <List>
-        <Typography variant="h6" component="span">Contacts</Typography>
-        {['Babatunde Ojo', 'James Doe', 'John kennedy', 'Kelvin Hart', 'Jacob Eson', 'Loius Rufus', 'Caleb Jasmine', 'Alves Alves', 'Doe Alves', 'kennedy Alves', 'Amazon Juis', 'Juis Ruf'].map((text, index) => (
+        <Typography variant="h6" component="span" className={classes.title}>Contacts</Typography>
+        {contacts.map((text, index) => (
             <ListItem button key={text}>
                 <ListItemIcon><AccountCircleIcon /></ListItemIcon>
                 <ListItemText primary={text} />
@@ -40,8 +44,9 @@ const Contacts = () => {
 }
 
 const GroupConversation = () => {
+    const classes = useStyles();
     return <div>
-        <Typography variant="h6" component="span">
+        <Typography variant="h6" component="span" className={classes.title}>
             Group Conversation
         </Typography>
     </div>
@@ -58,5 +63,13 @@ const AdditionalInfo = () => {
         <GroupConversation />
     </React.Fragment>
 }
+
+const useStyles = makeStyles((theme) => ({
+    title: {
+        color: "#65676B",
+        padding: "18px",
+        fontSize: "18px"
+    }
+}));
 
 export default AdditionalInfo;
