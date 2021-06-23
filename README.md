@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Installing Node Modules
+
+To step up this project, install all the dependencies using
+
+### `yarn add`
+
 ## Available Scripts
 
 In the project directory, you can run:
