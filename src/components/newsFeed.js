@@ -14,7 +14,7 @@ import { getStringFirstLetter, formatDate } from '../utils/helper';
 const NewsFeed = (props) => {
   
   const classes = useStyles();
-  const { data: { firstName, lastName, message, country, date } } = props;
+  const { data: { firstName, lastName, message, country, date, image } } = props;
 
   return (
     <Card className={classes.root}>
@@ -32,11 +32,10 @@ const NewsFeed = (props) => {
         title={`${firstName} ${lastName}`}
         subheader={formatDate(date)}
       />
-      {/* <CardMedia
+      {image && <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
-        title="Paella dish"
-      /> */}
+        image={image}
+      />}
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {message}
