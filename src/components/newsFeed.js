@@ -10,19 +10,20 @@ import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ReactPlayer from 'react-player'
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import parse from 'html-react-parser';
 import { getStringFirstLetter, formatDate } from '../utils/helper';
 
 const NewsFeed = (props) => {
   
   const classes = useStyles();
-  const { data: { firstName, lastName, message, country, date, image, video, type } } = props;
+  const { data: { firstName, lastName, message, date, image, video, type, name, description } } = props;
 
   return (
     <Card className={classes.root}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            {getStringFirstLetter(firstName)}{getStringFirstLetter(lastName)}
+            {name ? getStringFirstLetter(name) : `${getStringFirstLetter(firstName)} ${getStringFirstLetter(lastName)}`}
           </Avatar>
         }
         action={
@@ -30,19 +31,19 @@ const NewsFeed = (props) => {
             <MoreVertIcon />
           </IconButton>
         }
-        title={`${firstName} ${lastName}`}
+        title={name ? name : `${firstName} ${lastName}`}
         subheader={type ? type : formatDate(date)}
       />
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="div" className={classes.message}>
+          {parse(description || message)}
+        </Typography>
+      </CardContent>
       {image && <CardMedia
         className={classes.media}
         image={image}
       />}
       {video && <ReactPlayer url={video} playing controls width="auto" />}
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {message}
-        </Typography>
-      </CardContent>
       <Divider />
       {!type && <CardActions>
         <Grid container spacing={3} className={classes.center}>
@@ -107,8 +108,12 @@ const useStyles = makeStyles((theme) => ({
     center: {
       textAlign: "center",
       [theme.breakpoints.down('sm')]: {
-        textAlign: "left"
+        textAlign: "left",
+        fontSize: "1  px"
       }
+    },
+    message: {
+      color: "#000000"
     }
 }));
 

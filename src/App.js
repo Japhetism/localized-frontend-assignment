@@ -14,7 +14,6 @@ const initialState = {
 };
 
 const loginReducer = (state, action) => {
-  console.log("login user action ", action);
   switch(action.type) {
     case "LOGIN":
       storeData("user", action.payload.data.user);
@@ -51,8 +50,6 @@ const loginReducer = (state, action) => {
 const App = () => {
   const [state, dispatch] = React.useReducer(loginReducer, initialState);
 
-  console.log("from app", state)
-  
   React.useEffect(() => {
     const user = retrieveData("user");
     const token = retrieveData("token");

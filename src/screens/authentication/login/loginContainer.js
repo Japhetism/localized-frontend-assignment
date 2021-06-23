@@ -18,7 +18,6 @@ export const LoginContainer = () => {
         })
         login(loginData)
             .then(res => {
-                console.log(res)
                 if(res) {
                     return res.json();
                 } else {

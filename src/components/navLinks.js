@@ -2,8 +2,6 @@ import React from 'react';
 import { 
   List, Divider, ListItem, ListItemIcon, ListItemText, Typography, makeStyles 
 } from '@material-ui/core';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
 import { getStringFirstLetter } from '../utils/helper';
 import { links } from '../fixtures/links';

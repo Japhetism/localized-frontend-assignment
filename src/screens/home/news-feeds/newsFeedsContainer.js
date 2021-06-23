@@ -1,6 +1,7 @@
 import React from 'react';
 import NewsFeedsView from './newsFeedsView';
 import { AuthContext } from '../../../App';
+import { getAllNewsFeeds } from '../../../services/news-feeds';
 
 export const NewsFeedsContext = React.createContext();
 
@@ -40,12 +41,7 @@ export const NewsFeedsContainer = () => {
     const [state, dispatch] = React.useReducer(newsFeedsReducer, initialState);
 
     const getNewsFeeds = (pageSize) => {
-        fetch(`https://babatunde-assignment.herokuapp.com/api/v1/news-feeds?pageSize=${pageSize}`, {
-            headers: {
-                Authorization: `Bearer ${authState.token}`
-            },
-            method: "get"
-        })
+        getAllNewsFeeds(pageSize, authState.token)
         .then(res => {
             if(res.ok) {
                 return res.json();
