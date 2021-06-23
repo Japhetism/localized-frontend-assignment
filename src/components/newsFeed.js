@@ -79,7 +79,12 @@ const useStyles = makeStyles((theme) => ({
     root: {
       maxWidth: 'auto',
       textAlign: 'left',
-      marginBottom: '5%'
+      marginBottom: '5%',
+      width: "95%",
+      [theme.breakpoints.down('sm')]: {
+        margin: "5vh 1vh 0vh 1vh",
+        width: "98%"
+    },
     },
     media: {
       height: 0,
