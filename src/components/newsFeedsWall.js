@@ -15,6 +15,15 @@ const NewsFeedsWall = (props) => {
   const [hasMore, setHasMore] = React.useState(true);
   const [pageSize, setPageSize] = React.useState(5)
 
+  const mockAdsData = {
+    "id": 1,
+    "firstName": "Google",
+    "lastName": "Ads",
+    "message": "Customers are searching online for what you offer. Be there for them with Google Ads.",
+    "image": "https://scontent-los2-1.xx.fbcdn.net/v/t45.1600-4/fr/cp0/q90/spS444/120941797_23846343218880472_5432732573239882998_n.png.jpg?_nc_cat=1&ccb=1-3&_nc_sid=68ce8d&_nc_eui2=AeGzbB15ZGFplqiNJPNJFolz88phiD9h4yTzymGIP2HjJLyhnDH4YqqiGoTzkUosN08&_nc_ohc=o4kMWn711BQAX9kgVlG&_nc_ht=scontent-los2-1.xx&tp=31&oh=a1c30e780fdac8825e159e55d7c15094&oe=60D8580C",
+    "type": "Sponsored"
+  }
+
   React.useEffect(() => {
     if(data) {
       setHasMore(!(data.responseData.length === data.metaData.count))
@@ -55,16 +64,20 @@ const NewsFeedsWall = (props) => {
                 </p>
               }
             >
-              {/* {!isLoading &&  data && data.responseData.map((res, index) => <NewsFeed data={res} key={`${res.id}${index}`} /> )} */}
-             <div>
-                
-              <AdSense.Google
-                client='ca-pub-7220895595379340'
-                style={{ display: 'block' }}
-                format='auto'
-                responsive='true'
-              />
-              </div>
+              {!isLoading &&  data && data.responseData.map((res, index) => {
+                if(index % 4 === 0) {
+                  return (
+                    <>
+                    <NewsFeed data={mockAdsData} />
+                    <NewsFeed data={res} key={`${res.id}${index}`} /> 
+                    </>
+                  ) 
+                }else{
+                  return ( 
+                    <NewsFeed data={res} key={`${res.id}${index}`} /> 
+                  )
+                }
+              })}
             </InfiniteScroll>
         </Grid>
         {desktopDevice && <Grid item lg={3} md={3} xs={6} sm={3}>
