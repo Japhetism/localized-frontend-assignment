@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles, Grid, useMediaQuery } from '@material-ui/core';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import AdSense from 'react-adsense';
 import NewsFeed from './newsFeed';
 import NavLinks from './navLinks';
 import SideBar from './sideBar';
@@ -54,7 +55,16 @@ const NewsFeedsWall = (props) => {
                 </p>
               }
             >
-              {!isLoading &&  data && data.responseData.map((res, index) => <NewsFeed data={res} key={`${res.id}${index}`} /> )}
+              {/* {!isLoading &&  data && data.responseData.map((res, index) => <NewsFeed data={res} key={`${res.id}${index}`} /> )} */}
+             <div>
+                
+              <AdSense.Google
+                client='ca-pub-7220895595379340'
+                style={{ display: 'block' }}
+                format='auto'
+                responsive='true'
+              />
+              </div>
             </InfiniteScroll>
         </Grid>
         {desktopDevice && <Grid item lg={3} md={3} xs={6} sm={3}>
