@@ -39,16 +39,12 @@ export const NewsFeedsContainer = () => {
     const { state: authState, dispatch: authDispatch } = React.useContext(AuthContext);
     const [state, dispatch] = React.useReducer(newsFeedsReducer, initialState);
 
-    console.log("from news feed state ", authState)
-
-    React.useEffect(() => {
-        dispatch({
-            type: "FETCH_NEWS_FEEDS_REQUEST"
-        });
-        fetch("https://babatunde-assignment.herokuapp.com/api/v1/news-feeds", {
+    const getNewsFeeds = (pageSize) => {
+        fetch(`https://babatunde-assignment.herokuapp.com/api/v1/news-feeds?pageSize=${pageSize}`, {
             headers: {
                 Authorization: `Bearer ${authState.token}`
-            }
+            },
+            method: "get"
         })
         .then(res => {
             if(res.ok) {
@@ -58,18 +54,24 @@ export const NewsFeedsContainer = () => {
             }
         })
         .then(resJson => {
-            console.log(resJson);
             dispatch({
                 type: "FETCH_NEWS_FEEDS_SUCCESS",
                 payload: resJson
             });
         })
         .catch(error => {
-            console.log(error);
             dispatch({
                 type: "FETCH_NEWS_FEEDS_FAILURE"
             });
         });
+    }
+
+    React.useEffect(() => {
+        dispatch({
+            type: "FETCH_NEWS_FEEDS_REQUEST"
+        });
+        getNewsFeeds(5)
+        
     }, [authState.token]);
 
     const logout = () => {
@@ -80,12 +82,12 @@ export const NewsFeedsContainer = () => {
 
     const { isLoading, hasError, newsFeeds } = state;
 
-
     return <NewsFeedsView 
         logout={logout} 
         isLoading={isLoading} 
         hasError={hasError} 
         newsFeedsData={newsFeeds.data} 
         user={authState.user}
+        getNewsFeeds={getNewsFeeds}
     />
 }
