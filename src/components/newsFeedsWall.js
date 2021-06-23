@@ -59,13 +59,13 @@ const NewsFeedsWall = (props) => {
               hasMore={hasMore}
               loader={<h4>Loading...</h4>}
               endMessage={
-                <p style={{ textAlign: "center" }}>
+                data && <p style={{ textAlign: "center" }}>
                   <b>No more content</b>
                 </p>
               }
             >
               {!isLoading &&  data && data.responseData.map((res, index) => {
-                if(index % 4 === 0) {
+                if(index != 0 && index % 4 === 0) {
                   return (
                     <>
                     <NewsFeed data={mockAdsData} />

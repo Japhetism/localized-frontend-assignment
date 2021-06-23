@@ -46,7 +46,7 @@ const NewsFeed = (props) => {
       <Divider />
       {!type && <CardActions>
         <Grid container spacing={3} className={classes.center}>
-          <Grid item lg={4} md={4} sm={4} xs={4}>
+          <Grid item lg={4} md={3} sm={4} xs={4}>
             <Typography size="small" color="primary">
               <IconButton aria-label="add to favorites">
                 <FavoriteBorderIcon />
@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.down('sm')]: {
         margin: "5vh 1vh 0vh 1vh",
         width: "98%"
-    },
+      },
     },
     media: {
       height: 0,
@@ -105,7 +105,10 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: red[500],
     },
     center: {
-      textAlign: "center"
+      textAlign: "center",
+      [theme.breakpoints.down('sm')]: {
+        textAlign: "left"
+      }
     }
 }));
 
