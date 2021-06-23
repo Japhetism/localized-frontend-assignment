@@ -8,13 +8,14 @@ import { red } from '@material-ui/core/colors';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ReactPlayer from 'react-player'
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import { getStringFirstLetter, formatDate } from '../utils/helper';
 
 const NewsFeed = (props) => {
   
   const classes = useStyles();
-  const { data: { firstName, lastName, message, country, date, image } } = props;
+  const { data: { firstName, lastName, message, country, date, image, video } } = props;
 
   return (
     <Card className={classes.root}>
@@ -36,6 +37,7 @@ const NewsFeed = (props) => {
         className={classes.media}
         image={image}
       />}
+      {video && <ReactPlayer url={video} playing controls width="auto" />}
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {message}
